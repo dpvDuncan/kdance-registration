@@ -6,12 +6,13 @@ ContainerName=kdance_db
 Image=docker.io/library/mariadb:11.8
 EnvironmentFile=%h/GitHub/kdance-registration/kdance/quadlet/mysql.env
 Pod=kdance-registration.pod
-Volume=kdance-mariadb.volume:/var/lib/mysql
+Volume=kdance-mariadb.volume:/var/lib/mysql:U
 HealthCmd=healthcheck.sh --connect --innodb_initialized
 HealthInterval=5s
 HealthTimeout=10s
 HealthRetries=10
 Notify=healthy
+Label="traefik.enable=true"
 
 [Service]
 Restart=always

@@ -3,7 +3,9 @@ Description=KDance registration application pod
 
 [Pod]
 PodName=kdance-registration
-PublishPort=8000:8000
+PodmanArgs=--label "traefik.enable=false"
+#PublishPort=8000:8000
+UserNS=keep-id:uid=10001,gid=10001
 
 [Install]
 WantedBy=default.target

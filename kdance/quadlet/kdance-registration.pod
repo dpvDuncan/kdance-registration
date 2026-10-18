@@ -1,0 +1,9 @@
+[Unit]
+Description=KDance registration application pod
+
+[Pod]
+PodName=kdance-registration
+PublishPort=8000:8000
+
+[Install]
+WantedBy=default.target

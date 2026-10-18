@@ -5,13 +5,15 @@ This program (`KDance registration`) is a Django based web app.
 It is designed to help associations to handle their members database. It was specifically designed for the K'Dance association, thus, there are a lot of specific features / hardcoded stuff. Nevertheless, I believe it can be useful for any other association, with a few modifications.
 
 ##### To run locally
-Create a `.env` file with env variables in `kdance` folder. See the [settings file](./kdance/kdance/settings.py) to know what variables are expected.
+Copy `kdance/.env.example` to `kdance/.env` and adjust the local settings if needed. The example uses development-only database and administrator credentials; do not reuse them outside your local machine. SMTP and payment credentials can remain empty unless you need to test those integrations.
 ```sh
 cd kdance
-docker compose up
+docker compose up -d db
+docker compose run --rm backend python /app/manage.py migrate
+docker compose up --build
 ```
 
-In your browser, go to `http://localhost:8000` :tada:
+The initial migration creates the administrator configured in `.env` (`SUPERUSER_EMAIL` and `SUPERUSER_PWD`). In your browser, go to `http://localhost:8000`.
 
 ##### Maintenance and evolution
 I'm more or less active on this repo, depending on the needs of the association. Nevertheless, this is some kind of (big) pet project for me, and I want to take the opportunity to improve various stuff: code of course, but also deployment, testing and so on. Feel free to reach out for any comment or advice.

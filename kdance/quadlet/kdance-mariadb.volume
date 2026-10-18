@@ -1,0 +1,5 @@
+[Volume]
+VolumeName=kdance_mariadb_data
+
+[Install]
+WantedBy=default.target

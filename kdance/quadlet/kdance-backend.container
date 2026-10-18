@@ -1,0 +1,20 @@
+[Unit]
+Description=KDance Django backend
+Requires=kdance-db.service
+After=kdance-db.service
+
+[Container]
+ContainerName=kdance_backend
+Image=localhost/kdance-backend:latest
+Exec=python /app/manage.py runserver 0.0.0.0:8000
+EnvironmentFile=%h/GitHub/kdance-registration/kdance/.env
+Environment=DB_HOST=localhost
+Pod=kdance-registration.pod
+Volume=%h/GitHub/kdance-registration/kdance:/app:Z
+UserNS=keep-id:uid=10001,gid=10001
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

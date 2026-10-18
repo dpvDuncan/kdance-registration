@@ -35,7 +35,6 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-pymysql.version_info = (1, 4, 6, "final", 0)
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
